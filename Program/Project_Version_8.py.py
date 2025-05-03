@@ -1,3 +1,4 @@
+# All Required Imports And Libraries Required For The Project
 import tkinter as tk
 from tkinter import colorchooser
 from tkinter import Button
@@ -18,6 +19,9 @@ frameOne.grid(row=0 , column=0 , sticky=tk.NW)
 frameTwo = tk.Frame(window , bg="yellow" , width=1280,height=800)
 frameTwo.grid(row=1 , column=0)
 
+# ------------------------------------------Parent-Frame-Section-Close----------------------------------------------------------+
+
+
 # ------------------------------------------Icon-Section-Open----------------------------------------------------------+
 
 #The Icon Section Contains All The Icon That Are Going To Be Used Throughout The Program  
@@ -30,55 +34,67 @@ iconOfSelectColor = tk.PhotoImage(file="Icons/Small_morecolors.png")
 
 # ------------------------------------------Icon-Section-Close----------------------------------------------------------+
 
-# ------------------------------------------Parent-Frame-Section-Close----------------------------------------------------------+
-
 #-------------------------------------------Color-Box-Frame-Open--------------------------------------------------------------------+
-# colorBoxFrame=tk.Frame(frameOne , height=30 , borderwidth=3 ,relief="sunken")
-# colorBoxFrame.place(x=400,y=65)
-
+# This Compartment Of The Code Handle The Position And Other Things Of The Color Selection Box
 def selectcolor():
     selectedcolor = colorchooser.askcolor("red" , title="Select Color")
     stroke_color.set(selectedcolor[1])
 
-colorBoxButton= Button(frameOne  , width=40, height=40, command=selectcolor , image= iconOfSelectColor , bg="#D6F5EF")
+colorBoxButton= Button(frameOne  , width=40, height=40, command=selectcolor , image= iconOfSelectColor , bg="#D6F5EF" , activebackground="#D6F5EF" , highlightthickness=0 , relief="flat")
 colorBoxButton.place(x=420, y=70)
-
-
 
 #-------------------------------------------Color-Box-Frame-Close--------------------------------------------------------------------+
 
+
 #-------------------------------------------Colors-Frame-Open--------------------------------------------------------------------+
-colorFrame=tk.Frame(frameOne , height=120, width=230 , borderwidth=3 ,relief="sunken")
-colorFrame.place(x=490,y=37)
+# This Section Handle The Required Basic Colors Of Sets At The Upper Frame Of The Paint Window
+colorFrame=tk.Frame(frameOne , height=120, width=230 , borderwidth=0 ,relief="sunken" ,bg="#D6F5EF")
+colorFrame.place(x=490,y=55)
 
-redButton=Button(colorFrame , text="Red", bg="Red",width=10,activebackground="red", command=lambda:stroke_color.set("Red"))
-redButton.grid(row=0,column=0)
 
-greenButton=Button(colorFrame , text="Green", bg="Green",width=10,activebackground="green", command=lambda:stroke_color.set("Green"))
-greenButton.grid(row=1,column=0)
+redButton=Button(colorFrame ,bg="Red",width=3 , height=1,activebackground="red", command=lambda:stroke_color.set("Red"), highlightthickness=0 , relief="flat")
+redButton.grid(row=0,column=0 ,padx=5 , pady=5)
 
-blueButton=Button(colorFrame , text="Blue", bg="Blue",width=10,activebackground="blue", command=lambda:stroke_color.set("Blue"))
-blueButton.grid(row=2,column=0)
+greenButton=Button(colorFrame ,bg="Green",width=3,height = 1,activebackground="green", command=lambda:stroke_color.set("Green"), highlightthickness=0 , relief="flat")
+greenButton.grid(row=0,column=1,padx=5 , pady=5)
 
-yellowButton=Button(colorFrame , text="Yellow", bg="Yellow",width=10,activebackground="yellow", command=lambda:stroke_color.set("Yellow"))
-yellowButton.grid(row=0,column=1)
+blueButton=Button(colorFrame ,bg="Blue",width=3,height = 1,activebackground="blue", command=lambda:stroke_color.set("Blue"), highlightthickness=0 , relief="flat")
+blueButton.grid(row=0,column=2,padx=5 , pady=5)
 
-blackButton=Button(colorFrame , text="Black", bg="black",width=10,activebackground="Black" ,command=lambda:stroke_color.set("Black") , fg="white")
-blackButton.grid(row=1,column=1)
+yellowButton=Button(colorFrame ,bg="Yellow",width=3,height = 1,activebackground="yellow", command=lambda:stroke_color.set("Yellow"), highlightthickness=0 , relief="flat")
+yellowButton.grid(row=0,column=3,padx=5 , pady=5)
 
-whiteButton=Button(colorFrame , text="White", bg="White",width=10,activebackground="white", command=lambda:stroke_color.set("White"))
-whiteButton.grid(row=2,column=1)
+blackButton=Button(colorFrame ,bg="black",width=3,height = 1,activebackground="Black" ,command=lambda:stroke_color.set("Black") , fg="white", highlightthickness=0 , relief="flat")
+blackButton.grid(row=1,column=0,padx=5 , pady=5)
 
-orangeButton=Button(colorFrame , text="Orange", bg="Orange",width=10,activebackground="Orange", command=lambda:stroke_color.set("Orange"))
-orangeButton.grid(row=3,column=1)
+whiteButton=Button(colorFrame ,bg="White",width=3,height = 1,activebackground="white", command=lambda:stroke_color.set("White"), highlightthickness=0 , relief="flat")
+whiteButton.grid(row=1,column=1,padx=5 , pady=5)
 
-purpleButton=Button(colorFrame , text="Purple", bg="Purple",width=10, activebackground="Purple",command=lambda:stroke_color.set("Purple"))
-purpleButton.grid(row=3,column=0)
+orangeButton=Button(colorFrame ,bg="Orange",width=3,height = 1,activebackground="Orange", command=lambda:stroke_color.set("Orange"), highlightthickness=0 , relief="flat")
+orangeButton.grid(row=1,column=2,padx=5 , pady=5)
+
+purpleButton=Button(colorFrame ,bg="Purple",width=3,height = 1, activebackground="Purple",command=lambda:stroke_color.set("Purple"), highlightthickness=0 , relief="flat")
+purpleButton.grid(row=1,column=3,padx=5 , pady=5)
+
 
 MoreColors=Button
 
-
 #-------------------------------------------Colors-Frame-Close--------------------------------------------------------------------+
+# ------------------------------------------Tool-Functionality-Section-Open----------------------------------------------------------+
+# This Compartment Of The Code Handle The Functionality Of The Buttons, Also This Part Of The Code Is Important
+stroke_color = tk.StringVar()
+# stroke_color.set("blue")
+
+def usePencil():
+    stroke_color.set("black")
+    # usePencil.config(highlightbackground="red", highlightcolor="red", highlightthickness=2)
+    # pencilIcon["bordercolor"] = "blue"
+    #canvas['cursor'] = tk.MOUSE
+
+def useEraser():
+    stroke_color.set("white")
+    canvas['cursor'] = tk.DOTBOX
+# ------------------------------------------Tool-Functionality-Section-Close----------------------------------------------------------+
 
 
 # ------------------------------------------Menu-Section-Open----------------------------------------------------------+
@@ -89,82 +105,68 @@ menuFrame.place(x=0,y=0)
 
 # ------------------------------------------Menu-Section-Close----------------------------------------------------------+
 
-#-------------------------------------------Sve-Image-Frame-Open--------------------------------------------------------------------+
-saveImageFrame=tk.Frame(frameOne , height=30, width=85 , borderwidth=3 ,relief="sunken",bg="#FF9578")
+#-------------------------------------------Save-Image-Frame-Open--------------------------------------------------------------------+
+# Contains The Save Button Details
+saveImageFrame=tk.Frame(frameOne , height=30, width=85 , borderwidth=0 ,relief="sunken",bg="#FF9578")
 saveImageFrame.place(x=0,y=0)
 
-saveImageFrame= Button(frameOne , text="Save" , width=10)
+saveImageFrame= Button(frameOne , text="Save" , width=10, highlightthickness=0 , relief="flat",bg="#FF9578" , activebackground="#FF9578")
 saveImageFrame.place(x=2, y=2)
 
 #-------------------------------------------Save-Image-Frame-Close--------------------------------------------------------------------+
 
 #-------------------------------------------Clear-image-Frame-Open------------------------------------------------------------------------+
+# The Clear All Button Details
 def clear() :
     if messagebox.askokcancel("Warning!", "Do you want to clear everything?"):
         canvas.delete('all')
 
-clearImageFrame=tk.Frame(frameOne , height=30, width=110 , borderwidth=3 ,relief="sunken",bg="#FF9578")
+clearImageFrame=tk.Frame(frameOne , height=30, width=110 , borderwidth=0 ,relief="sunken",bg="#FF9578")
 clearImageFrame.place(x=85,y=0)
 
-clearImageFrame= Button(frameOne , text="Clear All" , width=14, command=clear)
-clearImageFrame.place(x=87, y=2)
+clearImageFrame= Button(frameOne , text="Clear All" , width=14, command=clear, highlightthickness=0 , relief="flat" ,bg="#FF9578" , activebackground="#FF9578")
+clearImageFrame.place(x=87, y=1)
 #-------------------------------------------Clear-image-Frame-Close------------------------------------------------------------------------+
 
-
 #--------------------------------------------Help-setting-Frame-Open------------------------------------------------------------------------------+
-
-HelpSettingFrame=tk.Frame(frameOne , height=30, width=240 , borderwidth=3 ,relief="sunken",bg="white")
+# The Help Button Details
+HelpSettingFrame=tk.Frame(frameOne , height=30, width=240 , borderwidth=0 ,relief="sunken",bg="white")
 HelpSettingFrame.place(x=850,y=0)
 
-Help= Button(HelpSettingFrame , text="Help" , width=10)
+Help= Button(HelpSettingFrame , text="Help" , width=10, highlightthickness=0 , relief="flat",bg="#FF9578" , activebackground="#FF9578")
 Help.grid(row=0, column=0)
 
-Setting= Button(HelpSettingFrame , text="Setting" , width=10)
+Setting= Button(HelpSettingFrame , text="Setting" , width=10, highlightthickness=0 , relief="flat",bg="#FF9578" , activebackground="#FF9578")
 Setting.grid(row=0, column=1)
 
-About= Button(HelpSettingFrame , text="About us" , width=10)
+About= Button(HelpSettingFrame , text="About us" , width=10, highlightthickness=0 , relief="flat",bg="#FF9578" , activebackground="#FF9578")
 About.grid(row=0, column=2)
 
 #--------------------------------------------Help-Setting-Frame-Close-----------------------------------------------------------------------------+
 
-
-# ------------------------------------------Tool-Functionality-Section-Open----------------------------------------------------------+
-stroke_color = tk.StringVar()
-# stroke_color.set("blue")
-
-def usePencil():
-    stroke_color.set("black")
-    #canvas['cursor'] = tk.MOUSE
-
-def useEraser():
-    stroke_color.set("white")
-    canvas['cursor'] = tk.DOTBOX
-# ------------------------------------------Tool-Functionality-Section-Close----------------------------------------------------------+
-
 # ----------------------------------------------------------------------------------------------------+
-
 # Tool Frame Which Will Contain All The Required Tools etc - pencil , eraser , color
-toolFrame = tk.Frame(frameOne , height=120 , width=120 , bg="#D6F5EF" )
+toolFrame = tk.Frame(frameOne , height=120 , width=120 , bg="#D6F5EF", highlightthickness=0 , relief="flat" )
 toolFrame.place(x = 20  , y = 50 )
 
 #Pencil Button/Icon -> Onclicking The Button The User Can Use The Pencil
-pencilIcon = tk.Button(toolFrame ,  width=20 , height=20 , image= iconOfPencil , command=usePencil )
+pencilIcon = tk.Button(toolFrame ,  width=20 , height=20 , image= iconOfPencil , command=usePencil, highlightthickness=0 , relief="flat" )
 pencilIcon.place(x = 5 , y = 5 )
 
 # Rubber Button/Icon
-eraserIcon = tk.Button(toolFrame , width=20, height=20 , image=iconOfEraser , command= useEraser)
+eraserIcon = tk.Button(toolFrame , width=20, height=20 , image=iconOfEraser , command= useEraser, highlightthickness=0 , relief="flat")
 eraserIcon.place(x = 5 , y = 40)
 
 # Font Icon
-fontIcon = tk.Button(toolFrame , width=20, height=20 , image=iconOfFont)
+fontIcon = tk.Button(toolFrame , width=20, height=20 , image=iconOfFont, highlightthickness=0 , relief="flat")
 fontIcon.place(x = 40 , y = 5)
 
 # Glass Icon
-glassIcon = tk.Button(toolFrame , width=20, height=20 , image=iconOfGlass)
+glassIcon = tk.Button(toolFrame , width=20, height=20 , image=iconOfGlass, highlightthickness=0 , relief="flat")
 glassIcon.place(x = 40 , y = 40)
 
 # Fill Icon
-fillIcon = tk.Button(toolFrame , width=20, height=20 , image=iconOfFill)
+fillIcon = tk.Button(toolFrame , width=20, height=20 , image=iconOfFill, highlightthickness=0 , relief="flat")
 fillIcon.place(x=80, y = 5)
 
 # One More Icon keep x = 80 and y = 40
@@ -174,7 +176,7 @@ toolLabel = tk.Label(toolFrame , text="Tool Bar" , width=25 , bg="#D6F5EF")
 toolLabel.place(x=-30 , y= 80)
 
 # ----------------------------------------------------------------------------------------------------
-
+# Addind Borders Along The Different Tools
 border_frame_one = tk.Frame(frameOne , width=2 , height= 100 , bg="black")
 border_frame_one.place(x = 160 , y = 50)
 
@@ -184,23 +186,23 @@ border_frame_two.place(x = 400 , y = 50)
 
 # ----------------------------------------------------------------------------------------------------
 # Implementing Scale For Pencil Stroke Size So That The User Can Use The Scale To Increase The Size Of The Pencil And Eraser Stroke
-
 stroke_size = tk.IntVar(value = 5)
 
-scale = tk.Scale(frameOne , from_=1, to=20 , orient="horizontal" , length=200 , bg="#D6F5EF" , background="#D6F5EF" ,variable=stroke_size)
+scale = tk.Scale(frameOne , from_=1, to=20 , orient="horizontal" , length=200 , bg="#D6F5EF" , background="#D6F5EF" ,troughcolor="#706D68",variable=stroke_size , highlightthickness=0)
 scale.place(x = 180 ,y = 50)
 
 scale_label = tk.Label(frameOne , text="Pencil & Eraser Size", bg="#D6F5EF")
 scale_label.place(x=220 , y=130)
 
 # ----------------------------------------------------------------------------------------------------
-
 # The Canvas Frame Where The User Can Draw Things
 canvas = tk.Canvas(frameTwo , width=1280 , height=800 , bg="white")
 canvas.grid(row=0,column=0)
-
 # ----------------------------------------------------------------------------------------------------
 
+
+
+# ----------------------------------------------------------------------------------------------------
 #Creating Pencil Functionality For The Paint Program
 prevPoint = [0,0]
 currentPoint = [0,0]
