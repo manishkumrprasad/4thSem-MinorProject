@@ -1,4 +1,4 @@
-import customtkinter as ctk
+import customtkinter as ctk # type: ignore
 from tkinter import colorchooser, PhotoImage, messagebox
 
 ctk.set_appearance_mode("light")  # or "dark"
@@ -18,7 +18,7 @@ stroke_size = ctk.IntVar(value=5)
 frameOne = ctk.CTkFrame(window, fg_color="#D6F5EF", width=1280, height=170, corner_radius=0)
 frameOne.grid(row=0, column=0, sticky="nw")
 
-frameTwo = ctk.CTkFrame(window, fg_color="yellow", width=1280, height=800, corner_radius=0)
+frameTwo = ctk.CTkFrame(window, fg_color="yellow", width=1500, height=800, corner_radius=0)
 frameTwo.grid(row=1, column=0)
 
 # --------------------------------- Icons ---------------------------------
@@ -91,7 +91,7 @@ scale.place(x=180, y=50)
 ctk.CTkLabel(frameOne, text="Pencil & Eraser Size", text_color="black").place(x=220, y=130)
 
 # --------------------------------- Canvas ---------------------------------
-canvas = ctk.CTkCanvas(frameTwo, width=1280, height=800, bg="white", highlightthickness=0)
+canvas = ctk.CTkCanvas(frameTwo, width=1500, height=800, bg="white", highlightthickness=0)
 canvas.grid(row=0, column=0)
 
 # Drawing Logic
@@ -103,7 +103,7 @@ def paint(event):
     if prevPoint != [0, 0]:
         canvas.create_line(prevPoint[0], prevPoint[1], x, y, fill=stroke_color.get(), width=stroke_size.get())
     prevPoint = [x, y]
-    if event.type == tk.EventType.ButtonRelease:
+    if event.type == tk.EventType.ButtonRelease: # type: ignore
         prevPoint = [0, 0]
 
 canvas.bind("<B1-Motion>", paint)

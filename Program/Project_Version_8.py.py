@@ -7,7 +7,7 @@ from tkinter import messagebox
 window = tk.Tk()
 window.geometry("1100x500")
 window.title("Painting Window Version 8")
-window.resizable(False , False)
+# window.resizable(False , False)
 
 # ------------------------------------------Parent-Frame-Section-Open----------------------------------------------------------+
 
@@ -30,7 +30,9 @@ iconOfEraser = tk.PhotoImage(file="Icons/Small_Eraser.png")
 iconOfFont = tk.PhotoImage(file="Icons/Small_Font.png")
 iconOfGlass = tk.PhotoImage(file="Icons/Small_Glass.png")
 iconOfFill = tk.PhotoImage(file="Icons/Small_Fill.png")
-iconOfSelectColor = tk.PhotoImage(file="Icons/Small_morecolors.png")
+# iconOfSelectColor = tk.PhotoImage(file="Icons/Small_morecolors.png")
+# iconOfSelectColor = tk.PhotoImage(file="Icons/Small_MoreColors2.png")
+iconOfSelectColor = tk.PhotoImage(file="Icons/Small_MoreColorsWithPlus.png")
 
 # ------------------------------------------Icon-Section-Close----------------------------------------------------------+
 
@@ -40,8 +42,8 @@ def selectcolor():
     selectedcolor = colorchooser.askcolor("red" , title="Select Color")
     stroke_color.set(selectedcolor[1])
 
-colorBoxButton= Button(frameOne  , width=40, height=40, command=selectcolor , image= iconOfSelectColor , bg="#D6F5EF" , activebackground="#D6F5EF" , highlightthickness=0 , relief="flat")
-colorBoxButton.place(x=420, y=70)
+colorBoxButton= Button(frameOne  , width=55, height=55, command=selectcolor , image= iconOfSelectColor , bg="#D6F5EF" , activebackground="#D6F5EF" , highlightthickness=0 , relief="flat",bd=0)
+colorBoxButton.place(x=610, y=60)
 
 #-------------------------------------------Color-Box-Frame-Close--------------------------------------------------------------------+
 
@@ -49,33 +51,37 @@ colorBoxButton.place(x=420, y=70)
 #-------------------------------------------Colors-Frame-Open--------------------------------------------------------------------+
 # This Section Handle The Required Basic Colors Of Sets At The Upper Frame Of The Paint Window
 colorFrame=tk.Frame(frameOne , height=120, width=230 , borderwidth=0 ,relief="sunken" ,bg="#D6F5EF")
-colorFrame.place(x=490,y=55)
+colorFrame.place(x=415,y=55)
 
-
-redButton=Button(colorFrame ,bg="Red",width=3 , height=1,activebackground="red", command=lambda:stroke_color.set("Red"), highlightthickness=0 , relief="flat")
+redButton=Button(colorFrame ,bg="Red",width=3 , height=1,activebackground="red", command=lambda:stroke_color.set("Red"), highlightthickness=0 , relief="flat" , bd=0)
 redButton.grid(row=0,column=0 ,padx=5 , pady=5)
 
-greenButton=Button(colorFrame ,bg="Green",width=3,height = 1,activebackground="green", command=lambda:stroke_color.set("Green"), highlightthickness=0 , relief="flat")
+greenButton=Button(colorFrame ,bg="Green",width=3,height = 1,activebackground="green", command=lambda:stroke_color.set("Green"), highlightthickness=0 , relief="flat", bd=0)
 greenButton.grid(row=0,column=1,padx=5 , pady=5)
 
-blueButton=Button(colorFrame ,bg="Blue",width=3,height = 1,activebackground="blue", command=lambda:stroke_color.set("Blue"), highlightthickness=0 , relief="flat")
+blueButton=Button(colorFrame ,bg="Blue",width=3,height = 1,activebackground="blue", command=lambda:stroke_color.set("Blue"), highlightthickness=0 , relief="flat", bd=0)
 blueButton.grid(row=0,column=2,padx=5 , pady=5)
 
-yellowButton=Button(colorFrame ,bg="Yellow",width=3,height = 1,activebackground="yellow", command=lambda:stroke_color.set("Yellow"), highlightthickness=0 , relief="flat")
+yellowButton=Button(colorFrame ,bg="Yellow",width=3,height = 1,activebackground="yellow", command=lambda:stroke_color.set("Yellow"), highlightthickness=0 , relief="flat", bd=0)
 yellowButton.grid(row=0,column=3,padx=5 , pady=5)
 
-blackButton=Button(colorFrame ,bg="black",width=3,height = 1,activebackground="Black" ,command=lambda:stroke_color.set("Black") , fg="white", highlightthickness=0 , relief="flat")
+greyButton=Button(colorFrame ,bg="grey",width=3,height = 1,activebackground="grey", command=lambda:stroke_color.set("grey"), highlightthickness=0 , relief="flat", bd=0)
+greyButton.grid(row=0,column=4,padx=5 , pady=5)
+
+blackButton=Button(colorFrame ,bg="black",width=3,height = 1,activebackground="Black" ,command=lambda:stroke_color.set("Black") , fg="white", highlightthickness=0 , relief="flat", bd=0)
 blackButton.grid(row=1,column=0,padx=5 , pady=5)
 
-whiteButton=Button(colorFrame ,bg="White",width=3,height = 1,activebackground="white", command=lambda:stroke_color.set("White"), highlightthickness=0 , relief="flat")
+whiteButton=Button(colorFrame ,bg="White",width=3,height = 1,activebackground="white", command=lambda:stroke_color.set("White"), highlightthickness=0 , relief="flat", bd=0)
 whiteButton.grid(row=1,column=1,padx=5 , pady=5)
 
-orangeButton=Button(colorFrame ,bg="Orange",width=3,height = 1,activebackground="Orange", command=lambda:stroke_color.set("Orange"), highlightthickness=0 , relief="flat")
+orangeButton=Button(colorFrame ,bg="Orange",width=3,height = 1,activebackground="Orange", command=lambda:stroke_color.set("Orange"), highlightthickness=0 , relief="flat", bd=0)
 orangeButton.grid(row=1,column=2,padx=5 , pady=5)
 
-purpleButton=Button(colorFrame ,bg="Purple",width=3,height = 1, activebackground="Purple",command=lambda:stroke_color.set("Purple"), highlightthickness=0 , relief="flat")
+purpleButton=Button(colorFrame ,bg="Purple",width=3,height = 1, activebackground="Purple",command=lambda:stroke_color.set("Purple"), highlightthickness=0 , relief="flat", bd=0)
 purpleButton.grid(row=1,column=3,padx=5 , pady=5)
 
+pinkButton=Button(colorFrame ,bg="pink",width=3,height = 1, activebackground="pink",command=lambda:stroke_color.set("pink"), highlightthickness=0 , relief="flat", bd=0)
+pinkButton.grid(row=1,column=4,padx=5 , pady=5)
 
 MoreColors=Button
 
@@ -184,6 +190,8 @@ border_frame_one.place(x = 160 , y = 50)
 border_frame_two = tk.Frame(frameOne , width=2 , height= 100 , bg="black")
 border_frame_two.place(x = 400 , y = 50)
 
+border_frame_three = tk.Frame(frameOne , width=2 , height= 100 , bg="black")
+border_frame_three.place(x = 690 , y = 50)
 # ----------------------------------------------------------------------------------------------------
 # Implementing Scale For Pencil Stroke Size So That The User Can Use The Scale To Increase The Size Of The Pencil And Eraser Stroke
 stroke_size = tk.IntVar(value = 5)
