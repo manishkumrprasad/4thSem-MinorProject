@@ -1,12 +1,11 @@
 import tkinter as tk
 from tkinter import colorchooser
 from tkinter import Button
-#import PIl.ImageGrab as ImageGrab  
 from tkinter import messagebox
 
 window = tk.Tk()
 window.geometry("1100x500")
-window.title("Painting Window Version 7")
+window.title("Painting Window Version 8")
 window.resizable(False , False)
 
 # ------------------------------------------Parent-Frame-Section-Open----------------------------------------------------------+
@@ -21,7 +20,7 @@ frameTwo.grid(row=1 , column=0)
 
 # ------------------------------------------Icon-Section-Open----------------------------------------------------------+
 
-#The Ico Section Contains All The Icon That Are Going To Be Used Throughout The Program  
+#The Icon Section Contains All The Icon That Are Going To Be Used Throughout The Program  
 iconOfPencil = tk.PhotoImage(file="Icons/Small_Pencil.png")
 iconOfEraser = tk.PhotoImage(file="Icons/Small_Eraser.png")
 iconOfFont = tk.PhotoImage(file="Icons/Small_Font.png")
@@ -80,8 +79,6 @@ MoreColors=Button
 
 
 #-------------------------------------------Colors-Frame-Close--------------------------------------------------------------------+
-
-
 
 
 # ------------------------------------------Menu-Section-Open----------------------------------------------------------+
