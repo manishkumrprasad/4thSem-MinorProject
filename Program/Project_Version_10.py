@@ -6,7 +6,7 @@ from tkinter import messagebox
 
 window = tk.Tk()
 window.geometry("1100x500")
-window.title("Painting Window Version 8")
+window.title("Painting Window Version 10")
 # window.resizable(False , False)
 
 # ------------------------------------------Parent-Frame-Section-Open----------------------------------------------------------+
@@ -84,10 +84,10 @@ pinkButton=Button(colorFrame ,bg="pink",width=3,height = 1, activebackground="pi
 pinkButton.grid(row=1,column=4,padx=5 , pady=5)
 
 MoreColors=Button
-
 #-------------------------------------------Colors-Frame-Close--------------------------------------------------------------------+
+
 # ------------------------------------------Tool-Functionality-Section-Open----------------------------------------------------------+
-# This Compartment Of The Code Handle The Functionality Of The Buttons, Also This Part Of The Code Is Important
+# This Part Of The Code Is Crucial As It Handles The Functionality Of The Buttons
 stroke_color = tk.StringVar()
 # stroke_color.set("blue")
 
@@ -162,26 +162,26 @@ def setting_window():
 
 def add_text_window():
     new_window = tk.Toplevel(window)
-    new_window.title("Add Text")
-    new_window.geometry("800x800")
+    new_window.title("Add Text To Canvas")
+    new_window.geometry("600x300")
     label = tk.Label(new_window, text="Enter The Text You Want To Display :")
     label.pack(pady=20)
 
     global entry
     entry = tk.Entry(new_window)
     entry.place(x = 130, y = 80)
-    btn = tk.Button(new_window , text="Add" , command= printt)
+    btn = tk.Button(new_window , text="Add" , command= printt  , width = 5, height = 1)
     btn.place(x = 170 , y = 120)
 
     # Sliders for X and Y position
     global x_slider , y_slider
     x_slider = tk.Scale(new_window, from_=0, to=1280, orient="horizontal", label="X Position")
     x_slider.set(200)  # default center
-    x_slider.pack()
+    x_slider.place(x = 350 , y = 50)
 
     y_slider = tk.Scale(new_window, from_=0, to=800, orient="vertical", label="Y Position")
     y_slider.set(125)
-    y_slider.pack()
+    y_slider.place(x = 350 , y = 150)
 #-------------------------------------------New-Window-Close------------------------------------------------------------------------+
 
 #--------------------------------------------Help-setting-Frame-Open------------------------------------------------------------------------------+
@@ -236,7 +236,6 @@ toolLabel.place(x=-30 , y= 80)
 border_frame_one = tk.Frame(frameOne , width=2 , height= 100 , bg="black")
 border_frame_one.place(x = 160 , y = 50)
 
-
 border_frame_two = tk.Frame(frameOne , width=2 , height= 100 , bg="black")
 border_frame_two.place(x = 400 , y = 50)
 
@@ -272,12 +271,9 @@ def paint(event):
     x = event.x
     y = event.y
     currentPoint =[x,y]
-    # canvas.create_oval(x,y,x+5,y+5, fill="black")
 
     if prevPoint != [0,0]:
         canvas.create_line(prevPoint[0] , prevPoint[1] , currentPoint[0] , currentPoint[1] ,fill=stroke_color.get() , width=stroke_size.get())
-        # canvas.create_polygon()
-        #canvas.create_polygon(prevPoint[0] , prevPoint[1] , currentPoint[0] , currentPoint[1] ,fill=stroke_color.get() , outline=stroke_size.get())
             
     prevPoint = currentPoint 
 
@@ -289,7 +285,6 @@ canvas.bind("<ButtonRelease-1>",paint)
 
 def printt():
     entered_text = entry.get()
-    print(entered_text)
     x_pos_text = x_slider.get()
     y_pos_text = y_slider.get()
 
