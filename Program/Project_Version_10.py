@@ -167,21 +167,26 @@ def add_text_window():
     label = tk.Label(new_window, text="Enter The Text You Want To Display :")
     label.pack(pady=20)
 
-    global entry
-    entry = tk.Entry(new_window)
-    entry.place(x = 130, y = 80)
-    btn = tk.Button(new_window , text="Add" , command= printt  , width = 5, height = 1)
-    btn.place(x = 170 , y = 120)
+    global textofentry
+    global entry 
+    textofentry = tk.StringVar(value = "Enter Here")
+
+    entry = tk.Entry(new_window , justify="center" , font=("Arial", 10) , textvariable=textofentry , width=50)
+    entry.place(x = 100, y = 80)
+    btn = tk.Button(new_window , text="Add" , command= printt  , width = 10, height = 2, highlightthickness=0 , relief="flat",bd=1)
+    btn.place(x = 250 , y = 120)
+
 
     # Sliders for X and Y position
     global x_slider , y_slider
-    x_slider = tk.Scale(new_window, from_=0, to=1280, orient="horizontal", label="X Position")
+    x_slider = tk.Scale(new_window, from_=0, to=1280, orient="horizontal", label="X Position" , length=200)
     x_slider.set(200)  # default center
-    x_slider.place(x = 350 , y = 50)
+    x_slider.place(x = 50 , y = 200)
 
-    y_slider = tk.Scale(new_window, from_=0, to=800, orient="vertical", label="Y Position")
+    y_slider = tk.Scale(new_window, from_=0, to=800, orient="horizontal", label="Y Position" , length=200)
     y_slider.set(125)
-    y_slider.place(x = 350 , y = 150)
+    y_slider.place(x = 350 , y = 200)
+
 #-------------------------------------------New-Window-Close------------------------------------------------------------------------+
 
 #--------------------------------------------Help-setting-Frame-Open------------------------------------------------------------------------------+
@@ -287,7 +292,8 @@ def printt():
     entered_text = entry.get()
     x_pos_text = x_slider.get()
     y_pos_text = y_slider.get()
-
+    textofentry.set(" ")
+    
     canvas.create_text(x_pos_text, y_pos_text, text=entered_text, font=("Arial", 16), fill="black", tags="text")
 # canvas.create_line(100,100,200,300)
 # canvas.create_rectangle(220,200,400,300)
