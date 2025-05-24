@@ -1,0 +1,40 @@
+"Paint Application Help"
+
+"Getting Started"
+
+"Select a tool from the toolbar (e.g., Brush, Eraser)."
+"Choose a color from the color palette."
+"Start drawing by clicking and dragging on the canvas.'
+
+"Tools & Their Functions"
+
+"Brush:** Draw freehand lines on the canvas. "
+"Eraser:** Remove parts of your drawing."
+"Color Picker:** Pick any color for the brush."
+"Fill Tool (if available):** Fill a closed area with a selected color."
+"Line/Rectangle/Ellipse:** Draw shapes (click and drag)."
+"Clear Canvas:** Erase the entire canvas."
+"Undo/Redo:** Revert or repeat your last action."
+
+"3. File Options"
+
+"New: Start a new canvas."
+"Open: Load an existing image (optional)."
+"Save: Save your drawing as an image file."
+
+"4. Shortcuts (if any)"
+
+"`Ctrl + Z`: Undo"
+"`Ctrl + S`: Save"
+"`Ctrl + N`: New Canvas"
+
+"5. Tips"
+
+"Hold `Shift` while drawing shapes for perfect squares/circles (if implemented)."
+"Use a stylus for better precision on touch-enabled devices."
+
+"6. About"
+
+"PaintApp v1.0"
+"Developed by Team Ricky Include Ricky Singh , Manish Kumar Prasad , And Anuj Shaw"
+"© 2025 All Rights Reserved"

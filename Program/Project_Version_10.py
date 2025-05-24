@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import colorchooser
 from tkinter import Button
 from tkinter import messagebox
+from tkinter import scrolledtext
 
 window = tk.Tk()
 window.geometry("1100x500")
@@ -20,7 +21,6 @@ frameTwo = tk.Frame(window , bg="yellow" , width=1280,height=800)
 frameTwo.grid(row=1 , column=0)
 
 # ------------------------------------------Parent-Frame-Section-Close----------------------------------------------------------+
-
 
 # ------------------------------------------Icon-Section-Open----------------------------------------------------------+
 
@@ -143,8 +143,55 @@ def help_window():
     new_window = tk.Toplevel(window)
     new_window.title("Help")
     new_window.geometry("400x600")
-    label = tk.Label(new_window, text="This is a Help Window")
-    label.pack(pady=20)
+    # label = tk.Label(new_window, text="This is a Help Window")
+    # label.pack(pady=20)
+
+    help_text = (
+        "                               Paint Application Help\n\n"
+        "• Getting Started \n \n "
+
+        "→ Select a tool from the toolbar (e.g., Brush, Eraser).\n"
+        "→ Choose a color from the color palette.\n"
+        "→ Start drawing by clicking and dragging on the canvas.\n \n"
+
+
+        "• Tools & Their Functions\n"
+        "→ Eraser: Remove parts of your drawing.\n"
+        "→ Brush: Draw freehand lines on the canvas.\n"
+        "→ Color Picker: Pick any color for the brush.\n"
+        "→ Fill Tool (if available):** Fill a closed area with a selected color.\n"
+        "→ Line/Rectangle/Ellipse:** Draw shapes (click and drag).\n"
+        "→ Clear Canvas: Erase the entire canvas.\n"
+        "→ Undo/Redo: Revert or repeat your last action.\n \n"
+
+        "• 3. File Options\n "
+
+        "→ New: Start a new canvas.\n"
+        "→ Open: Load an existing image (optional).\n"
+        "→ Save: Save your drawing as an image file.\n \n"
+
+        "• 4. Shortcuts (if any)\n"
+
+        "→ `Ctrl + Z`: Undo\n"
+        "→ `Ctrl + S`: Save\n"
+        "→ `Ctrl + N`: New Canvas\n \n"
+
+        "• 5. Tips\n "
+
+        "→ Hold `Shift` while drawing shapes for perfect squares/circles (if implemented).\n"
+        "→ Use a stylus for better precision on touch-enabled devices.\n \n"
+
+        "• 6. About\n"
+
+        "PaintApp v1.0\n"
+        "Developed by Team Ricky Include Ricky Singh ,Arun Shaw And Manish Kumar Prasad\n "
+        "© 2025 All Rights Reserved\n"
+        
+    )
+    text_area = scrolledtext.ScrolledText(new_window, wrap=tk.WORD, font=("Arial", 12))
+    text_area.insert(tk.END, help_text)
+    text_area.config(state='disabled')  # Make it read-only
+    text_area.pack(expand=True, fill='both')
 
 def aboutus_window():
     new_window = tk.Toplevel(window)
